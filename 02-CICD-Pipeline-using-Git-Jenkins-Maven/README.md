@@ -32,4 +32,28 @@
 
 
   3. Install Jenkins
+     1. ```bash 
+
+        [ec2-user ~]$ sudo yum install jenkins -y
+
+        ```
   4. Start Jenkins on Port 8080
+     1. Enable the Jenkins service to start at boot:
+
+        ```bash
+        [ec2-user ~]$ sudo systemctl enable jenkins
+        ```
+      2. Start Jenkins as a service:
+        ```bash
+        [ec2-user ~]$ sudo systemctl start jenkins
+        ```
+      3. You can check the status of the Jenkins service using the command:
+
+        ```bash
+        [ec2-user ~]$ sudo systemctl status jenkins
+        ```
+
+        
+
+
+
