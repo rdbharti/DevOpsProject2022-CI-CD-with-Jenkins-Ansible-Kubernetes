@@ -78,3 +78,25 @@
     ``` bash
       sudo ufs allow 8080
     ```
+
+# First Jenkins Job
+
+- New Itm -> Enter item name: "Hello World" -> click freestyle -> 
+    - General
+        - description: HelloWorldJob
+    - Build
+        - Execute Shell
+            - Commad: echo "Hello World $( date )"
+    - Save
+- Build Now (To execute HelloWorld job)
+    - Output 
+    ```
+    Started by user admin
+        Running as SYSTEM
+        Building in workspace /var/lib/jenkins/workspace/HelloWorld
+        [HelloWorld] $ /bin/sh -xe /tmp/jenkins10938345257485883820.sh
+        + date
+        + echo Hello World Mon Nov 21 10:50:23 IST 2022
+        Hello World Mon Nov 21 10:50:23 IST 2022
+        Finished: SUCCESS
+      ```
