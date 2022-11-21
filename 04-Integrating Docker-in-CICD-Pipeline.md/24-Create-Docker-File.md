@@ -95,12 +95,24 @@ DockerFile
 
 ## Install tomcat on CentOS
 
-1. Pull CentOS from dockerhub
-2. Install Java
-3. Create directory: /opt/tomcat
-4. Change work directory: /opt/tomcat
-5. Download Tomcat packages
-6. Extrack the tomcat package (.tar.gz file)
-7. Rename Tomcat directory
-8. Tell to docker that it runs on port 8080
-9. Start tomcat services
+1. Pull CentOS from dockerhub (FROM)
+2. Install Java (RUN)
+3. Create directory: /opt/tomcat (RUN)
+4. Change work directory: /opt/tomcat (WORKDIR)
+5. Download Tomcat packages (ADD/RUN)
+6. Extrack the tomcat package (.tar.gz file) (RUN)
+7. Rename Tomcat directory (RUN)
+8. Tell to docker that it runs on port 8080 (EXPOSE)
+9. Start tomcat services (CMD - coz it euns during docker execution)
+
+```console
+FROM centos:7
+RUN yum install java -y
+RUN mkdir /opt/tomcat
+WORKDIR /opt/tomcat
+ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.69/bin/apache-tomcat-9.0.69.tar.gz .
+RUN tar -xvzf apache-tomcat-9.0.69.tar.gz
+RUN mv apache-tomcat-9.0.69/* /opt/tomcat
+EXPOSE 8080
+CMD ["/opt/tomcat/bin/catalina.sh", "run"]
+```
