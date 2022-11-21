@@ -1,1 +1,35 @@
 # CICD Pipeline using Git Jenkins Maven
+----
+
+# Setup Jenkins Server
+- On AWS
+  1. Setup Linux EC2 instance
+     1. Use Amazon Linux 2 
+     2. t2.micro
+     3. Security Group: Open Port 22(SSH) and 8080(Jenkins)
+     4. Use Key pair for SSH connection to ec2 instance. \
+    [Follow Jenkins Official website for install instructions](https://www.jenkins.io/doc/tutorials/tutorial-for-installing-jenkins-on-AWS/)
+  2. Install Java
+     1. Ensure that your software packages are up to date on your instance by uing the following command to perform a quick software update:
+     ```bash
+     [ec2-user ~]$ sudo yum update –y
+     ```
+     2. Add the Jenkins repo using the following command:
+        ```bash
+        [ec2-user ~]$ sudo wget -O /etc/yum.repos.d/jenkins.repo \
+        https://pkg.jenkins.io/redhat-stable/jenkins.repo        ```
+     3. Import a key file from Jenkins-CI to enable installation from the package:
+        ```bash 
+        [ec2-user ~]$ sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+
+        [ec2-user ~]$ sudo yum upgrade
+        ```
+     4. Install Java:
+
+        ```bash
+        [ec2-user ~]$ sudo amazon-linux-extras install java-openjdk11 -y
+        ```
+
+
+  3. Install Jenkins
+  4. Start Jenkins on Port 8080
