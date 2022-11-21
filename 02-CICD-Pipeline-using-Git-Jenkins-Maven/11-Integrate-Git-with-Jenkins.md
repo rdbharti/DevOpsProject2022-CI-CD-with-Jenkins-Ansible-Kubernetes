@@ -17,3 +17,5 @@
          1. Name: Git
          2. Path to git executable: If git is installed in PATH then "Git"; \ IF git not installed in the PATH then run  on Linux Server run "Whereis git" -> /usr/bin/git
    3. Save.
+
+# Pull Code From GitHub
