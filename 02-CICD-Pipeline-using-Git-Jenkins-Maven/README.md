@@ -17,7 +17,8 @@
      2. Add the Jenkins repo using the following command:
         ```bash
         [ec2-user ~]$ sudo wget -O /etc/yum.repos.d/jenkins.repo \
-        https://pkg.jenkins.io/redhat-stable/jenkins.repo        ```
+        https://pkg.jenkins.io/redhat-stable/jenkins.repo        
+        ```
      3. Import a key file from Jenkins-CI to enable installation from the package:
         ```bash 
         [ec2-user ~]$ sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
@@ -52,8 +53,28 @@
         ```bash
         [ec2-user ~]$ sudo systemctl status jenkins
         ```
+- On Ubuntu
+  - Run the following commands
+  ```bash
+  # Long Term Support Release
 
-        
+    curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee \
+    /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+    echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+    https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+    /etc/apt/sources.list.d/jenkins.list > /dev/null
+    sudo apt-get update
+    sudo apt-get install jenkins
+    ```
 
+    - Install Java
+    
+    ```bash
+      $ sudo apt install openjdk-11-jre
+      $ java -version
 
-
+    ```
+    - Open firewall port 8080 (To access jenkins from outside of VM)
+    ``` bash
+      sudo ufs allow 8080
+    ```
