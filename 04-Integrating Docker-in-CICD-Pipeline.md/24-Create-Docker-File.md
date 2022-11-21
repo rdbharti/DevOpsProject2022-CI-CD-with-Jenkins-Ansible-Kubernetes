@@ -91,3 +91,16 @@ DockerFile
 - `SHELL` - The SHELL instruction allows the default shell used for the shell form of commands to be overridden. 
 
 
+# Creating a DockerFile
+
+## Install tomcat on CentOS
+
+1. Pull CentOS from dockerhub
+2. Install Java
+3. Create directory: /opt/tomcat
+4. Change work directory: /opt/tomcat
+5. Download Tomcat packages
+6. Extrack the tomcat package (.tar.gz file)
+7. Rename Tomcat directory
+8. Tell to docker that it runs on port 8080
+9. Start tomcat services
