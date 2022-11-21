@@ -25,4 +25,7 @@
    ```bash
     cp -R webapps.dist/* webapps
    ``
-5. Reload the Browser for working tomcat container
+5. Exit the docker container ` exit `
+6. Reload the Browser for working tomcat container
+
+ > Note: Once the container is stopped, we will have to rectify this issue again.
