@@ -116,3 +116,8 @@ RUN mv apache-tomcat-9.0.69/* /opt/tomcat
 EXPOSE 8080
 CMD ["/opt/tomcat/bin/catalina.sh", "run"]
 ```
+
+Build
+```bash
+docker build -t demotomcat .
+```
