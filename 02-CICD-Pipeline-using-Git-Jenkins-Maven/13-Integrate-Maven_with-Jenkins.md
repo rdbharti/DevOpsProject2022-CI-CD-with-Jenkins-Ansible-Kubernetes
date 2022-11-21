@@ -46,3 +46,10 @@ export PATH
 ```
 - Check the Path: echo $PATH
 - output: ` /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/opt/maven:/opt/maven/bin:/usr/lib/jvm/java-11-openjdk-amd64 `
+
+4. Install Maven Plugin.
+   - Dashboard -> manage jenkins -> manage plugin -> available -> maven integration -> install without restart
+   - Dashboard -> Mnage Jenkins -> global tool Config -> JDK -> Add jdk: Name: Java 11; JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64
+   - Maven -> Name: Maven-3.8.6
+            -> Un-tick: Install Automatically
+            -> MAVEN_HOME=/opt/maven
