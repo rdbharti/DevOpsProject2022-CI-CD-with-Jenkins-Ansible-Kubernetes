@@ -13,3 +13,15 @@ passwd dockeradmin # add password for the user
 
 usermod -aG docker dockeradmin
 ```
+
+- Install Plugin on Jenkins
+  - Publish Over SSH
+  - Configure for docker host: dasboard -> Manage Plugins -> Configure Syatem -> Publish Over SSH
+    - ADD SSH Server
+    - Name: Docker-Server
+    - Hostname: ip-addr of docker server (in my case local ubuntu-vm 192.168.1.10)
+    - Username: dockeradmin
+    - check Use Password Authentication:
+      - Enter Password:  \<of dockeradmin\>
+    - Test Configuration -> Success
+    - Apply and Save
