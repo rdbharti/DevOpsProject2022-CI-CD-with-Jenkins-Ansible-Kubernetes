@@ -21,3 +21,14 @@
         "ping": "pong"
         }
     ```
+
+- Check Uptime of the docker-remote
+
+```bash
+ansible all -m command -a uptime
+
+# 192.168.1.10 | SUCCESS | rc=0 >>
+#  22:32:51 up  2:18,  4 users,  load average: 0.00, 0.02, 0.06
+
+
+```
