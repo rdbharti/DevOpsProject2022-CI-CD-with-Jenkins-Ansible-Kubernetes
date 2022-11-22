@@ -73,3 +73,6 @@ docker run -d --name tomcatv1 -p 8086:8080 tomcat:v1
 ```
 7. Access the webapp by viewing in browseer: http://192.168.1.10:8086/webapp/
 
+> We need to find a way so that all the manual docker image build or container build is done automatically on Jenkins Build.
+
+# Automate Build and Deployment on Docker Container
