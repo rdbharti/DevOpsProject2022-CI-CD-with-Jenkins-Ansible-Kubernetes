@@ -12,5 +12,5 @@
 3. Create user: ansadmin
 4. Add user 'ansadmin' to sudoers file # visudo
 5. Generate SSH keys
-6. Enable Password based login on ec2-instance # vi /etc/ssh/sshd_config; uncomment PasswordAuthentication yes 
-7. Install Ansible.
+6. Enable Password based login on ec2-instance ` # vi /etc/ssh/sshd_config; uncomment PasswordAuthentication yes ` 
+7. Install Ansible. ` yum install -y ansible `
