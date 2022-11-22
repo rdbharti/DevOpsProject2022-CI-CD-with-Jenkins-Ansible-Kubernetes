@@ -87,3 +87,18 @@ docker run -d --name tomcatv1 -p 8086:8080 tomcat:v1
     ``` 
 2. Apply and Save
 
+> The Above exec command will throw error after 1st exeecution, as we cannot create multiple containers with the same name.
+
+## To rectify above issue
+
+1. Post-build Actions
+   1. Exec commands:
+    
+    ```bash
+    cd /opt/docker
+    docker build -t regapp:v1 .
+    docker stop registerapp;
+    docker rm registerapp;
+    docker run -d --name registerapp -p 8087:8080 regapp:v1
+    ``` 
+2. Apply and Save
