@@ -13,7 +13,7 @@
       2. ` ssh-copy-id docker-host-ip ` -> ` ssh-copy-id 192.168.1.10`
       3. This will create '.ssh/authorized_keys' on docker-host
    3. Test the connection
-   4. 
+   
     ```console
         ansible all -m ping
         192.168.1.10 | SUCCESS => {
