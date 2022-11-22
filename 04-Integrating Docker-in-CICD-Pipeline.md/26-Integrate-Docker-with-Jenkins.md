@@ -76,3 +76,14 @@ docker run -d --name tomcatv1 -p 8086:8080 tomcat:v1
 > We need to find a way so that all the manual docker image build or container build is done automatically on Jenkins Build.
 
 # Automate Build and Deployment on Docker Container
+
+1. Post-build Actions
+   1. Exec commands:
+    
+    ```bash
+    cd /opt/docker
+    docker build -t regapp:v1 .
+    docker run -d --name registerapp -p 8087:8080 regapp:v1
+    ``` 
+2. Apply and Save
+
