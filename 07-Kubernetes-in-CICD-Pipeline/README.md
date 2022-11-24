@@ -65,3 +65,12 @@ spec:
   ```
 
   # Integrate Kubernetes Cluster with Ansible
+
+  1. On Bootstarp Server
+     1. Create user: ansadmin
+     2. Add user 'ansadmin' to sudoers
+     3. Enable password based login
+  2. On Ansible Server
+     1. Add Bootstarp server to /etc/ansible/hosts
+     2. copy ssh keys to Bootstrap Server
+     3. Test the connection
