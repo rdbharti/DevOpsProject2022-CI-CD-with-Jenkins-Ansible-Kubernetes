@@ -63,3 +63,5 @@ spec:
   ```bash
     kubectl apply -f regapp-deployment.yaml -f regapp-service.yaml
   ```
+
+  # Integrate Kubernetes Cluster with Ansible
