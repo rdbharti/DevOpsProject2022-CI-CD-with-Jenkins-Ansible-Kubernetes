@@ -48,4 +48,26 @@
     # Or run the command with sudo 
    ```
 
+# Ansible Playbook to Craete Image and Container
+
+- On ansible-server
+  - Add Ansible-Server ip in /etc/ansible/hosts
+  - On ansible-server as ansadmin run ` ssh-copy-id 192.168.1.13` # ip-add of ansible-server so that ansible can access ansible server 
+  - Creating Ansible-playbook
+  ```yaml
+
+   # vi regapp.yaml
    
+   ---
+   - hosts: 192.168.1.13
+   tasks:
+   - name: create docker image
+      command: docker build -t regapp:latest .
+      args:
+         chdir: /opt/docker
+
+   ```
+
+  - Run Ansible Playbook `ansible-playbook regapp.yaml` 
+  - Above playbook will create a docker image
+    - docker images -> regapp:latest
