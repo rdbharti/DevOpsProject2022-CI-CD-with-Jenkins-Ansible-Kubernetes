@@ -64,13 +64,46 @@ spec:
     kubectl apply -f regapp-deployment.yaml -f regapp-service.yaml
   ```
 
-  # Integrate Kubernetes Cluster with Ansible
+# Integrate Kubernetes Cluster with Ansible
 
-  1. On Bootstarp Server
+  1. On Bootstarp Server (The one which is running kubectl)
      1. Create user: ansadmin
      2. Add user 'ansadmin' to sudoers
-     3. Enable password based login
+     3. Enable password based login (edit: /etc/ssh/sshd_config)
   2. On Ansible Server
      1. Add Bootstarp server to /etc/ansible/hosts
      2. copy ssh keys to Bootstrap Server
      3. Test the connection
+
+- On Ansible Server create deployment and service file
+  - `vi kube_deploy.yaml`
+  ```yaml
+  ---
+  - hosts: kubernetes
+  #  become: trur # to become root
+    user: root
+
+    tasks:
+      - name: deploy regapp on kubernetes
+        command: kubectl apply -f /home/ubuntu/cicd-with-jenkins-ansible-kubernetes/regapp-deployment.yaml
+
+  ```
+
+  - `vi kube_service.yaml`
+```yaml
+---
+- hosts: kubernetes
+#  become: true
+  user: root
+
+  tasks:
+    - name: Deploy regapp Service on Kubernetes
+      command: kubectl apply -f /home/ubuntu/cicd-with-jenkins-ansible-kubernetes/regapp-deployment.yaml
+```
+
+> add ip address of the kubernetes-controller in /etc/ansible/hosts
+```console
+[kubernetes]
+192.168.1.10
+
+````
