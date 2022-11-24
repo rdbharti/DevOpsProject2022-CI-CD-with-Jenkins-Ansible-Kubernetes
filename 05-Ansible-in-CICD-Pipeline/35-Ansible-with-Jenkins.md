@@ -87,3 +87,32 @@
   ```bash
    docker push ranadurlabh/regapp:latest
   ```
+
+# Jenkins Job To Build an Image onto Ansible
+
+
+## On Ansible-Server
+
+```yaml
+
+---
+- hosts: ansible
+  tasks:
+  - name: create docker image
+    command: docker build -t regapp:latest .
+    args:
+      chdir: /opt/docker
+
+  - name: Create Tag to Push Image onto Docker Hub
+    command: docker tag regapp:latest ranadurlabh/regapp:latest
+
+  - name: Push docker image
+    command: docker push ranadurlabh/regapp:latest
+
+```
+
+## On Jenkins
+
+- Dashboard -> Copy_Artifacts_Onto-Ansible -> Configure
+  - Under Post-build Actions -> Send build artifacts over SSH -> exec-code
+    - ` ansible-paybook regapp.yaml `
