@@ -81,3 +81,9 @@
    username:
    password:
   ```
+- TO Push image to docker hub the format of the image-name should be `<username>/image-name:tag ` i.e ranadurlabh/regapp:latest
+  - ` docker tag <image-id> ranadurlabh/regapp:latest `
+  - ` docker tag aac8ca8677f8 ranadurlabh/regapp:latest `
+  ```bash
+   docker push ranadurlabh/regapp:latest
+  ```
