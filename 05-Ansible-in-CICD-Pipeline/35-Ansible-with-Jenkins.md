@@ -116,3 +116,32 @@
 - Dashboard -> Copy_Artifacts_Onto-Ansible -> Configure
   - Under Post-build Actions -> Send build artifacts over SSH -> exec-code
     - ` ansible-paybook regapp.yaml `
+
+# Using Ansible to Create containers.
+
+- Write an Ansible Playbook to create a container on Docker-Host
+- Docker-Host will pull Image from Docker-hub and create a container.
+- On Ansible-Server ` vi deploy_regapp.yaml`
+  ```yaml
+
+   ---
+
+   - hosts: docker-host
+      
+      tasks:
+      - name: Create Container
+         command: docker run -d --name regapp-server -p 8082:8080 ranadurlabh/regapp:latest
+
+  ```
+- On Docker Server execute following command
+  - ` sudo su - ansadmin`
+  - ` chmod 777 /var/run/docker.sock`
+- On Ansible Server
+  - ` ansible-palyboon deploy_regapp.yaml`
+
+> The above command will create container only once, if that command is executed again then it will throw an error, because multiple containers with same name can't be created.
+
+- We will have to delete the Old container to create a new container with the same name.
+
+
+
