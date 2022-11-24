@@ -115,7 +115,7 @@
 
 - Dashboard -> Copy_Artifacts_Onto-Ansible -> Configure
   - Under Post-build Actions -> Send build artifacts over SSH -> exec-code
-    - ` ansible-paybook regapp.yaml `
+    - ` ansible-paybook /opt/docker/regapp.yaml `
 
 # Using Ansible to Create containers.
 
@@ -174,3 +174,10 @@
 
 
   ```
+
+# Jenkins CI/CD to deploy on container using Ansible.
+
+- Dashboard -> Copy_Artifacts_Onto-Ansible -> Configure
+  - Under Post-build Actions -> Send build artifacts over SSH -> exec-code
+    - ` ansible-paybook /opt/docker/regapp.yaml `
+    - ` ansible-paybook /opt/docker/deploy_regapp_container.yaml `
