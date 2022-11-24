@@ -71,3 +71,6 @@
   - Run Ansible Playbook `ansible-playbook regapp.yaml` 
   - Above playbook will create a docker image
     - docker images -> regapp:latest
+
+# Copy Image Onto Docker-Hub
+
