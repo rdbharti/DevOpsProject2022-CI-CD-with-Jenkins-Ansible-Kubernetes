@@ -74,3 +74,10 @@
 
 # Copy Image Onto Docker-Hub
 
+- Login to docker-hub from ansible-server
+  ```console
+
+  docker login
+   username:
+   password:
+  ```
