@@ -106,4 +106,7 @@ spec:
 [kubernetes]
 192.168.1.10
 
-````
+```
+
+- Execute Ansible Playbook
+  - ` ansible-playbook kube_deploy.yaml `
