@@ -144,4 +144,33 @@
 - We will have to delete the Old container to create a new container with the same name.
 
 
+# Continous Deployment of Docker Conatainer Using ansible Playbook
 
+- Remove existing conatiner.
+- Remove Existing Image.
+- Create New Conatainer.
+- Create deploy_regapp_container.yaml ` vim deploy_regapp_container.yaml `
+  ```yaml
+
+   ---
+
+   - hosts: docker-host
+   
+   tasks:
+      - name: Stop Container
+         command: docker stop regapp-server
+         igonore_errors: yes # if container doesn't exists don't throw error
+
+      - name: Remove Container
+         command: docker rm regapp-server
+         igonore_errors: yes # if container doesn't exists don't throw error
+
+      - name: Remove Image
+         command: docker rmi ranadurlabh/regapp:latest
+         igonore_errors: yes # if image doesn't exists don't throw error
+
+      - name: Create Container
+         command: docker run -d --name regapp-server -p 8082:8080 ranadurlabh/regapp:latest
+
+
+  ```
