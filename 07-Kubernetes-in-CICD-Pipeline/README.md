@@ -110,3 +110,5 @@ spec:
 
 - Execute Ansible Playbook
   - ` ansible-playbook kube_deploy.yaml `
+
+# Creating Jenkins Deployment Job for Kubernetes
