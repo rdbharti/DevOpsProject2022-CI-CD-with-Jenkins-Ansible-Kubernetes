@@ -99,6 +99,8 @@ spec:
   tasks:
     - name: Deploy regapp Service on Kubernetes
       command: kubectl apply -f /home/ubuntu/cicd-with-jenkins-ansible-kubernetes/regapp-deployment.yaml
+    - name: update deployment with new pods if image updated in docker hub
+      command: kubectl rollout restart deployment regapp-deployment
 ```
 
 > add ip address of the kubernetes-controller in /etc/ansible/hosts
@@ -115,7 +117,7 @@ spec:
 
 ## Continous Deployment
 - Create a Jenkins Job to execute commands on Ansible-Server to run the Ansible-Playbook
-  - GOTO Jenkins Dashboard -> New Item: CI_regapp -> FreeStyle -> Ok
+  - GOTO Jenkins Dashboard -> New Item: CD_regapp -> FreeStyle -> Ok
   - Under Build Action -> Send build artifacts over SSH -> SSH server name: Ansible-Server from Drop Down
   -> exec commands: 
   ```console
@@ -126,7 +128,7 @@ spec:
   -> Apply and Save
 
 ## Continous Integration
-- Create a new Job : CD_regapp
+- Create a new Job : CI_regapp
 - Under Build Action -> Send build artifacts over SSH -> SSH server name: Ansible-Server from Drop Down
   -> exec commands: 
   ```console
@@ -147,5 +149,12 @@ spec:
       command: docker tag regapp:latest ranadurlabh/regapp:latest
 
     - name: Push docker image
-      command: docker push ranadurlabh/regapp:latest
+      command: docker push ranadurlabh/regapp:latest # This will update the deployment with the latest docker image
   ```
+
+# Enabling Rolling Update to Create a pod from latest docker image
+
+- Edit Config of CI_regapp job
+- Under Post-build-Actions -> Build other projects
+  - Project to build: CD_regapp
+  - Apply and Save
