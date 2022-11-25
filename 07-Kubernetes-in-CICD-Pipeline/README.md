@@ -113,7 +113,8 @@ spec:
 
 # Creating Jenkins Deployment Job for Kubernetes
 
-- Create a Jenkins Job just to execute commands on Ansible-Server to run the Ansible-Playbook
+## Continous Deployment
+- Create a Jenkins Job to execute commands on Ansible-Server to run the Ansible-Playbook
   - GOTO Jenkins Dashboard -> New Item: Artifact_on_Kubernetes -> FreeStyle -> Ok
   - Under Build Action -> Send build artifacts over SSH -> SSH server name: Ansible-Server from Drop Down
   -> exec commands: 
@@ -123,3 +124,4 @@ spec:
   
   ```
   -> Apply and Save
+
