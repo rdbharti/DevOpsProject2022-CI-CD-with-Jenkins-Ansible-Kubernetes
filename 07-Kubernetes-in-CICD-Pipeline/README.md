@@ -112,3 +112,14 @@ spec:
   - ` ansible-playbook kube_deploy.yaml `
 
 # Creating Jenkins Deployment Job for Kubernetes
+
+- Create a Jenkins Job just to execute commands on Ansible-Server to run the Ansible-Playbook
+  - GOTO Jenkins Dashboard -> New Item: Artifact_on_Kubernetes -> FreeStyle -> Ok
+  - Under Build Action -> Send build artifacts over SSH -> SSH server name: Ansible-Server from Drop Down
+  -> exec commands: 
+  ```console
+  ansible-playbook /opt/docker/kube_deploy.yaml;
+  ansible-playbook /opt/docker/kube_service.yaml;
+  
+  ```
+  -> Apply and Save
