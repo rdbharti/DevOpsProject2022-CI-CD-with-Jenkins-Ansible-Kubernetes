@@ -115,7 +115,7 @@ spec:
 
 ## Continous Deployment
 - Create a Jenkins Job to execute commands on Ansible-Server to run the Ansible-Playbook
-  - GOTO Jenkins Dashboard -> New Item: Artifact_on_Kubernetes -> FreeStyle -> Ok
+  - GOTO Jenkins Dashboard -> New Item: CI_regapp -> FreeStyle -> Ok
   - Under Build Action -> Send build artifacts over SSH -> SSH server name: Ansible-Server from Drop Down
   -> exec commands: 
   ```console
@@ -125,3 +125,27 @@ spec:
   ```
   -> Apply and Save
 
+## Continous Integration
+- Create a new Job : CD_regapp
+- Under Build Action -> Send build artifacts over SSH -> SSH server name: Ansible-Server from Drop Down
+  -> exec commands: 
+  ```console
+  ansible-playbook /opt/docker/create_image_regapp.yaml;
+  ```
+
+- create_image_regapp.yaml
+  ```yaml
+  ---
+  - hosts: ansible-server
+    tasks:
+    - name: create docker image
+      command: docker build -t regapp:latest .
+      args:
+        chdir: /opt/docker
+
+    - name: Create Tag to Push Image onto Docker Hub
+      command: docker tag regapp:latest ranadurlabh/regapp:latest
+
+    - name: Push docker image
+      command: docker push ranadurlabh/regapp:latest
+  ```
