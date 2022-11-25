@@ -1,5 +1,9 @@
 # DevOps Project - 2022: CI/CD with Jenkins Ansible Kubernetes
 
+## Course Complete Certificate
+
+![DevOps Project - 2022: CI/CD with Jenkins Ansible Kubernetes Certificate](./zz_images/cicd-jenkins-ansible-kubernetes%5BUdemy%5D.jpg)
+
 This is my notes of udemy course [DevOps Project - 2022: CI/CD with Jenkins Ansible Kubernetes](https://www.udemy.com/course/valaxy-devops/)
 
 - What you'll learn
